@@ -140,13 +140,13 @@
                     {% endif %}
                 {% endfor %}
                 {% set srcset = srcset ~ '"' %}
-                {% if str_starts_with(assets.get('branding').getCodes()[1].getContent(), 'public') %}
-                    <img src="{{str_replace('public/', '', links.url(assets.get('branding').getCodes()[1].getContent(), true))}}" {{srcset}} alt="Logo" style="height:90px">
-                {% else %}
-                    <img src="{{links.images(assets.get('branding').getCodes()[1].getContent())}}" {{srcset}} alt="Logo" style="height:90px">
-                {% endif %}
                 <a class="brand-mark" href="#">
-                    <img src="http://sp.local/tms/default/images/assets/9085494b-8892-4c9c-b44c-4a87659c325b" data-rjs="3" alt="BTC TMS Logo" class="brand-image" style="height:90px"></a>
+                    {% if str_starts_with(assets.get('branding').getCodes()[1].getContent(), 'public') %}
+                        <img src="{{str_replace('public/', '', links.url(assets.get('branding').getCodes()[1].getContent(), true))}}" {{srcset}} alt="Logo" style="height:90px">
+                    {% else %}
+                        <img src="{{links.images(assets.get('branding').getCodes()[1].getContent())}}" {{srcset}} alt="Logo" style="height:90px">
+                    {% endif %}
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
